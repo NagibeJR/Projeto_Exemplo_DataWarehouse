@@ -20,7 +20,7 @@ begin
 
 		WHILE @@FETCH_STATUS = 0
 		BEGIN
-			IF NOT EXISTS (SELECT * FROM DIM_LOJA WHERE COD_LOJA = @COD_LOJA)
+			IF NOT EXISTS (SELECT 1 FROM DIM_LOJA WHERE COD_LOJA = @COD_LOJA)
 			BEGIN
 					INSERT INTO DIM_LOJA(COD_LOJA, LOJA, CIDADE, ESTADO, SIGLA_ESTADO)
 					VALUES(@COD_LOJA, @LOJA, @CIDADE, @ESTADO, @SIGLA_ESTADO)
@@ -46,7 +46,6 @@ begin
 	CLOSE C_LOJA
 	DEALLOCATE C_LOJA
 end
-end
 
 -- Teste
 
@@ -56,4 +55,3 @@ select * from dim_loja
 select * from TB_AUX_LOJA
 select * from TB_LOJA
 
-use dw_lowlatency

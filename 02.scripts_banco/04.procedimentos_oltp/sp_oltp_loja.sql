@@ -19,8 +19,5 @@ END
 
 exec sp_oltp_loja '20230321'
 
-select * from tb_aux_loja
-select * from tb_loja
-select * from tb_cidade
-select * from TB_ESTADO
-use dw_lowlatency
+SELECT * FROM TB_AUX_LOJA
+

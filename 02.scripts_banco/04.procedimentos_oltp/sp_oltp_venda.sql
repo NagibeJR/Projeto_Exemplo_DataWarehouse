@@ -21,15 +21,8 @@ end
 
 -- Teste
 
-exec sp_oltp_venda '20230321', '20230101', '20230701'
+exec sp_oltp_venda '20230321', '20230101', '20230601'
 
 SELECT * FROM TB_AUX_VENDA
-SELECT * FROM TB_VENDA
 
-select * from TB_VENDA
-select * from TB_LOJA
-select * from TB_PRODUTO
-select * from TB_CATEGORIA
-select * from TB_CIDADE
-select * from TB_ESTADO
-select * from TB_TIPO_PAGAMENTO
+

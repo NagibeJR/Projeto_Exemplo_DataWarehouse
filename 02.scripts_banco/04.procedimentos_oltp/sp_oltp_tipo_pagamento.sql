@@ -16,4 +16,4 @@ end
 exec sp_oltp_tipo_pagamento '20230321'
 
 
-SELECT * FROM TB_TIPO_PAGAMENTO
+SELECT * FROM TB_AUX_TIPO_PAGAMENTO
