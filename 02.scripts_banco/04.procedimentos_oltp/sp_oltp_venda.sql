@@ -2,28 +2,28 @@ USE dw_lowlatency
 create or alter procedure sp_oltp_venda(@data_carga datetime, @data_inicial datetime, @data_final datetime)
 as
 begin 
+	DELETE FROM TB_AUX_VENDA
+	WHERE @data_carga = DATA_CARGA
 	INSERT INTO TB_AUX_VENDA (DATA_CARGA, DATA_VENDA, COD_LOJA, COD_PRODUTO, COD_TIPO_PAGAMENTO, COD_VENDA, VOLUME,VALOR)
-				SELECT 
-					@data_carga,
-					L.DATA_VENDA AS DATA_VENDA,
-					L.COD_LOJA,
-					L.COD_PRODUTO AS COD_PRODUTO,
-					L.COD_TIPO_PAGAMENTO AS COD_TIPO_PAGAMENTO,
-					L.COD_VENDA,
-					L.VOLUME AS VOLUME,
-					L.VALOR
-
-				FROM 
-					TB_VENDA L
+	SELECT @data_carga,
+			V.DATA_VENDA,
+			V.COD_LOJA,
+			V.COD_PRODUTO,
+			V.COD_TIPO_PAGAMENTO,
+			V.COD_VENDA,
+			V.VOLUME,
+			V.VALOR
+	FROM TB_VENDA V
+	WHERE V.DATA_VENDA >= @data_inicial AND V.DATA_VENDA >= @data_final
 end	
 
 
 
 -- Teste
 
-exec sp_oltp_venda '20230304', '20230301', '20230304'
+exec sp_oltp_venda '20230321', '20230101', '20230701'
 
-select * from TB_AUX_VENDA
+SELECT * FROM TB_AUX_VENDA
 SELECT * FROM TB_VENDA
 
 select * from TB_VENDA

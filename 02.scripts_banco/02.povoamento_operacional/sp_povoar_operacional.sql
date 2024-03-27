@@ -193,7 +193,7 @@ end
 set statistics time off
 set statistics io off
 
-exec sp_povoar_vendas '20230101', '20230105'
+exec sp_povoar_vendas '20230101', '20230701'
 
 
 select count(*) from tb_venda
