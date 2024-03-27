@@ -73,6 +73,10 @@ exec sp_dim_tempo '20230101', '20230701'
 
 select * from dim_tempo
 
+
+-- Script para povoar a dimensão feriados no ano de 2023
+--Dados retirados do site a baixo
+--https://www.anbima.com.br/feriados/fer_nacionais/2023.asp
 INSERT INTO DIM_FERIADOS(DATA,DESCRICAO,TIPO)
 VALUES('2023-01-01','Confraternização Universal','NACIONAL'),
 		('2023-20-02','Carnaval','NACIONAL'),
@@ -83,6 +87,9 @@ VALUES('2023-01-01','Confraternização Universal','NACIONAL'),
 		('2023-08-06','Corpus Christi','NACIONAL')
 
 select * from DIM_FERIADOS
+
+
+-- Script para atualizar a dimensão tempo com os feriados cadastrados na dimensão feriados
 
 create or alter procedure so_atualiza_feriado(@ano int)
 as
