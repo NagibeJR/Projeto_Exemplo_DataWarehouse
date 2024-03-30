@@ -91,7 +91,7 @@ select * from DIM_FERIADOS
 
 -- Script para atualizar a dimensão tempo com os feriados cadastrados na dimensão feriados
 
-create or alter procedure so_atualiza_feriado(@ano int)
+create or alter procedure sp_atualiza_feriado(@ano int)
 as
 begin
 	
@@ -103,4 +103,4 @@ begin
 
 end
 
-EXEC so_atualiza_feriado '2023'
+exec sp_atualiza_feriado '2023'
